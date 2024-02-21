@@ -60,6 +60,15 @@ app.put('/order/:id', checkOrderId, (request, response) => {
     return response.json(orders[index]);
 })
 
+// Criando rota para deleção de pedido
+app.delete('/order/:id', checkOrderId, (request, response) => {
+    
+    const index = request.orderIndex;
+    orders.splice(index, 1);
+
+    //return response.status(204).json(orders);
+    return response.json(orders);
+})
 
 
 
