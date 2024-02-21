@@ -1,0 +1,15 @@
+Não precisa inserir id pois a biblioteca uuid faz a inserção
+automaticamente
+
+[
+	{
+		"order": "X-salada, 2 batatas grades, 1 coca cola",
+		"clientName": "José",
+		"price": 47.5
+	},
+	{
+		"order": "Suco de laranja, 2 batatas grades, 2 hamburguers",
+		"clientName": "Charles",
+		"price": 57.5
+	}
+]
