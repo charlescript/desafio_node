@@ -45,6 +45,15 @@ app.get('/order', (request, response) => {
     return response.json(orders);
 })
 
+// Rota para visualizar apenas um pedido
+app.get('/order/:id', checkOrderId, (request, response) => {
+
+    const id = request.orderId;
+    const index = request.orderIndex;
+
+    return response.json(orders[index]);
+})
+
 
 // Criando rota para alterar pedido
 app.put('/order/:id', checkOrderId, (request, response) => {
