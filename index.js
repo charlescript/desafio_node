@@ -30,8 +30,8 @@ const checkOrderId = (request, response, next) => {
 // Criando rota para inserção de ordens
 app.post('/order', (request, response) => {
 
-    const { order, clientName, price } = request.body; 
-    const struct_order = { id:uuid.v4() , order, clientName, price };
+    const { order, clientName, price, status } = request.body; 
+    const struct_order = { id:uuid.v4() , order, clientName, price, status };
 
     orders.push(struct_order);
 
@@ -59,10 +59,10 @@ app.get('/order/:id', checkOrderId, (request, response) => {
 app.put('/order/:id', checkOrderId, (request, response) => {
 
     const id = request.orderId;
-    const { order,clientName,price } = request.body;
+    const { order, clientName, price, status } = request.body;
     const index = request.orderIndex;
     
-    const updatedOrder = { id, order, clientName, price }
+    const updatedOrder = { id, order, clientName, price, status }
 
     orders[index] = updatedOrder;
 
