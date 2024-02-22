@@ -30,7 +30,7 @@ automaticamente
 // ABAIXO AS ROTAS TESTADAS NO INSOMNIA
 
 updated_status
-PATCH: http://localhost:3000/order/$id
+PATCH: http://localhost:3000/order_update_status/$id
 
 estrutura: 
 {
@@ -40,26 +40,26 @@ estrutura:
 _______________________________________________
 
 consultar_1_ordem
-GET: http://localhost:3000/order/$id
+GET: http://localhost:3000/order_one_check/$id
 
 _______________________________________________
 
 delete_ordens
-DELETE: http://localhost:3000/order/$id
+DELETE: http://localhost:3000/order_delete/$id
 
 _______________________________________________
 
 update_order
-PUT: http://localhost:3000/order/$id
+PUT: http://localhost:3000/order_update/$id
 
 _______________________________________________
 
 consulta_ordens
-GET: http://localhost:3000/$id
+GET: http://localhost:3000/order_consult/$id
 
 _______________________________________________
 
 inserir_ordens
-POST: http://localhost:3000/order
+POST: http://localhost:3000/order_add
 
 _______________________________________________

@@ -26,9 +26,15 @@ const checkOrderId = (request, response, next) => {
     next()
 }
 
+const checkMethod = (request, response, next) => {
+    const { method, originalUrl } = request; // Obtendo o método e a URL da solicitação
+    console.log(`${method} ${originalUrl}`); // Logando o método e a URL
+    next();
+}
+
 
 // Criando rota para inserção de ordens
-app.post('/order', (request, response) => {
+app.post('/order_add', checkMethod, (request, response) => {
 
     const { order, clientName, price, status } = request.body; 
     const struct_order = { id:uuid.v4() , order, clientName, price, status };
@@ -40,13 +46,13 @@ app.post('/order', (request, response) => {
 
 
 // Criando rota para consultar pedidos
-app.get('/order', (request, response) => {
+app.get('/order_consult', checkMethod, (request, response) => {
      
     return response.json(orders);
 })
 
 // Rota para visualizar apenas um pedido
-app.get('/order/:id', checkOrderId, (request, response) => {
+app.get('/order_one_check/:id', checkOrderId, checkMethod, (request, response) => {
 
     const id = request.orderId;
     const index = request.orderIndex;
@@ -56,7 +62,7 @@ app.get('/order/:id', checkOrderId, (request, response) => {
 
 
 // Criando rota para alterar pedido
-app.put('/order/:id', checkOrderId, (request, response) => {
+app.put('/order_update/:id', checkOrderId, (request, response) => {
 
     const id = request.orderId;
     const { order, clientName, price, status } = request.body;
@@ -70,7 +76,7 @@ app.put('/order/:id', checkOrderId, (request, response) => {
 })
 
 // Criando rota PATCH para alterar apenas o STATUS do pedido via ID
-app.patch('/order/:id', checkOrderId, (request, response) => {
+app.patch('/order_update_status/:id', checkOrderId, (request, response) => {
 
     const id = request.orderId;
     const { status } = request.body;
@@ -85,7 +91,7 @@ app.patch('/order/:id', checkOrderId, (request, response) => {
 
 
 // Criando rota para deleção de pedido
-app.delete('/order/:id', checkOrderId, (request, response) => {
+app.delete('/order_delete/:id', checkOrderId, (request, response) => {
     
     const index = request.orderIndex;
     orders.splice(index, 1);
