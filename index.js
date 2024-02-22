@@ -62,7 +62,7 @@ app.get('/order_one_check/:id', checkOrderId, checkMethod, (request, response) =
 
 
 // Criando rota para alterar pedido
-app.put('/order_update/:id', checkOrderId, (request, response) => {
+app.put('/order_update/:id', checkOrderId, checkMethod, (request, response) => {
 
     const id = request.orderId;
     const { order, clientName, price, status } = request.body;
@@ -76,7 +76,7 @@ app.put('/order_update/:id', checkOrderId, (request, response) => {
 })
 
 // Criando rota PATCH para alterar apenas o STATUS do pedido via ID
-app.patch('/order_update_status/:id', checkOrderId, (request, response) => {
+app.patch('/order_update_status/:id', checkOrderId, checkMethod, (request, response) => {
 
     const id = request.orderId;
     const { status } = request.body;
@@ -91,7 +91,7 @@ app.patch('/order_update_status/:id', checkOrderId, (request, response) => {
 
 
 // Criando rota para deleção de pedido
-app.delete('/order_delete/:id', checkOrderId, (request, response) => {
+app.delete('/order_delete/:id', checkOrderId, checkMethod, (request, response) => {
     
     const index = request.orderIndex;
     orders.splice(index, 1);
