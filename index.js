@@ -69,6 +69,21 @@ app.put('/order/:id', checkOrderId, (request, response) => {
     return response.json(orders[index]);
 })
 
+// Criando rota PATCH para alterar apenas o STATUS do pedido via ID
+app.patch('/order/:id', checkOrderId, (request, response) => {
+
+    const id = request.orderId;
+    const { status } = request.body;
+    const index = request.orderIndex;
+
+    const updatedStatus =  status ;
+
+    orders[index].status = updatedStatus;
+
+    return response.json(orders[index]);
+})
+
+
 // Criando rota para deleção de pedido
 app.delete('/order/:id', checkOrderId, (request, response) => {
     
