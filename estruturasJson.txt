@@ -1,15 +1,65 @@
 Não precisa inserir id pois a biblioteca uuid faz a inserção
 automaticamente
 
-[
-	{
-		"order": "X-salada, 2 batatas grades, 1 coca cola",
-		"clientName": "José",
-		"price": 47.5
-	},
-	{
-		"order": "Suco de laranja, 2 batatas grades, 2 hamburguers",
-		"clientName": "Charles",
-		"price": 57.5
-	}
-]
+{
+	"order": "Café expresso, croissant, suco de maçã 1L",
+	"clientName": "João",
+	"price": 25.80,
+	"status": "Em preparação"
+},
+{
+	"order": "Pizza margherita, refrigerante 2L",
+	"clientName": "Ana",
+	"price": 35.90,
+	"status": "Pronto para entrega"
+},
+{
+	"order": "Sanduíche de frango, batata frita, milkshake de chocolate",
+	"clientName": "Marcos",
+	"price": 18.50,
+	"status": "Entregue"
+},
+{
+	"order": "Sopa de legumes, salada mista, suco detox",
+	"clientName": "Luiza",
+	"price": 22.30,
+	"status": "Em preparação"
+}
+
+
+// ABAIXO AS ROTAS TESTADAS NO INSOMNIA
+
+updated_status
+PATCH: http://localhost:3000/order/$id
+
+estrutura: 
+{
+	"status": "Pronto"
+}
+
+_______________________________________________
+
+consultar_1_ordem
+GET: http://localhost:3000/order/$id
+
+_______________________________________________
+
+delete_ordens
+DELETE: http://localhost:3000/order/$id
+
+_______________________________________________
+
+update_order
+PUT: http://localhost:3000/order/$id
+
+_______________________________________________
+
+consulta_ordens
+GET: http://localhost:3000/$id
+
+_______________________________________________
+
+inserir_ordens
+POST: http://localhost:3000/order
+
+_______________________________________________
