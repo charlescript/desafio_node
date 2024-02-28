@@ -36,13 +36,17 @@ const checkMethod = (request, response, next) => {
 // Criando rota para inserção de ordens
 app.post('/order_add', checkMethod, (request, response) => {
 
-    const { order, clientName, price, status } = request.body; 
-    const struct_order = { id:uuid.v4() , order, clientName, price, status };
+    try {
+        const { order, clientName, price, status } = request.body; 
+        const struct_order = { id:uuid.v4() , order, clientName, price, status };
 
-    orders.push(struct_order);
+        orders.push(struct_order);
 
-    return response.status(201).json(orders);
-})
+        return response.status(201).json(orders);
+    }catch(err) {
+        return response.status(500).json({error: err.message});
+    }
+});
 
 
 // Criando rota para consultar pedidos
